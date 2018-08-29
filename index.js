@@ -42,8 +42,7 @@ app.post('/api/courses', (req, res) => {
     const { error } = validateCourse(req.body);
 
     if (error) {
-        res.status(400).send(error.details[0].message);
-        return;
+        return res.status(400).send(error.details[0].message);
     }
 
     const course = {
@@ -60,15 +59,13 @@ app.put('/api/courses/:id', (req, res) => {
     const course = courses.find(course => course.id === id);
 
     if (!course) {
-        res.status(404).send('Course not found');
-        return;
+        return res.status(404).send('Course not found');
     }
 
     const { error } = validateCourse(req.body);
 
     if (error) {
-        res.status(400).send(error.details[0].message);
-        return;
+        return res.status(400).send(error.details[0].message);
     }
 
     course.name = req.body.name;
@@ -81,8 +78,7 @@ app.delete('/api/courses/:id', (req, res) => {
     const course = courses.find(course => course.id === id);
 
     if (!course) {
-        res.status(404).send('Course not found');
-        return;
+        return res.status(404).send('Course not found');
     }
 
     const index = courses.indexOf(course);
